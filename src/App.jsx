@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import SignupForm from './components/SignupForm';
+import AddOrderForm from './components/AddOrderForm';
+import OrderDetails from './components/OrderDetails';
+import LoginForm from './components/LoginForm';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Switch>
+        <Route path="/" exact component={LoginForm} />
+        <Route path="/signup" component={SignupForm} />
+        <Route path="/add-user" component={UserForm} />
+        <Route path="/add-order" component={AddOrderForm} />
+        <Route path="/order-details" component={OrderDetails} />
+      </Switch>
+    </Router>
+  );
 }
 
-export default App
+export default App;
